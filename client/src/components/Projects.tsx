@@ -1,8 +1,9 @@
 import { useProjects } from "@/hooks/use-portfolio";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Loader2 } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import vehicleImage from "@/assets/vehicle.png";
 
 export function Projects() {
   const { data: projects, isLoading } = useProjects();
@@ -19,76 +20,80 @@ export function Projects() {
           </div>
         </div>
 
-        {isLoading ? (
-          <div className="flex justify-center py-20">
-            <Loader2 className="w-12 h-12 animate-spin text-primary" />
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects?.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col h-full bg-card rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-              >
-                {project.imageUrl && (
-                  <div className="h-48 overflow-hidden bg-muted">
-                    {/* Use Unsplash image if provided, otherwise placeholder handled by img onError or specific logic */}
-                    <img 
-                      src={project.imageUrl} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                )}
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6 line-clamp-3 flex-grow">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.techStack.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="font-normal">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <div className="flex gap-4 mt-auto pt-4 border-t border-border/50">
-                    {project.githubUrl && (
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                        <Button variant="outline" size="sm" className="w-full gap-2">
-                          <Github className="w-4 h-4" /> Code
-                        </Button>
-                      </a>
-                    )}
-                    {project.demoUrl && (
-                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                        <Button size="sm" className="w-full gap-2 shadow-lg shadow-primary/20">
-                          <ExternalLink className="w-4 h-4" /> Live Demo
-                        </Button>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-            
-            {/* Empty State / Call to Action if no projects */}
-            {projects?.length === 0 && (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <motion.div
+            key={"1"}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="group flex flex-col h-full bg-card rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+          >
+
+            <div className="aspect-[16/9] overflow-hidden bg-muted">
+              {/* Use Unsplash image if provided, otherwise placeholder handled by img onError or specific logic */}
+              <img
+                src={vehicleImage}
+                alt={"project.title"}
+                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+
+            <div className="p-6 flex flex-col flex-grow">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                Service Log & Maintenance Dashboard
+              </h3>
+              <p className="text-muted-foreground mb-6 line-clamp-3 flex-grow">
+                A full-stack vehicle maintenance system with service history, workshop assignment, and “next service due” reminders built with a modern dashboard UI and Supabase-backed authentication/data.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+
+                <Badge key={"tech"} variant="secondary" className="font-normal">
+                  React
+                </Badge>
+
+                <Badge key={"tech"} variant="secondary" className="font-normal">
+                  MUI
+                </Badge>
+                <Badge key={"tech"} variant="secondary" className="font-normal">
+                  Supabase
+                </Badge>
+                 <Badge key={"tech"} variant="secondary" className="font-normal">
+                         Vercel 
+                    </Badge>
+              </div>
+
+              <div className="flex gap-4 mt-auto pt-4 border-t border-border/50">
+
+                <a href={"https://github.com/bewbs92/vehicle-maintenance-tracker"} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button variant="outline" size="sm" className="w-full gap-2">
+                    <Github className="w-4 h-4" /> Code
+                  </Button>
+                </a>
+
+
+                <a href={"https://vehicle-maintenance-tracker-nine.vercel.app/"} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button size="sm" className="w-full gap-2 shadow-lg shadow-primary/20">
+                    <ExternalLink className="w-4 h-4" /> Live Demo
+                  </Button>
+                </a>
+
+              </div>
+            </div>
+          </motion.div>
+
+
+          {/* Empty State / Call to Action if no projects */}
+          {/* {projects?.length === 0 && (
               <div className="col-span-full text-center py-20 text-muted-foreground bg-secondary/20 rounded-2xl border border-dashed border-border">
                 <p>No projects added yet. Check back soon!</p>
               </div>
-            )}
-          </div>
-        )}
+            )} */}
+        </div>
+
       </div>
     </section>
   );
