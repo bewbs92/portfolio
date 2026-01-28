@@ -66,7 +66,7 @@ export function Navbar() {
           <Button 
             variant="default" 
             size="sm"
-            onClick={() => window.open("/resume.pdf", "_blank")}
+            onClick={() => window.open("/resume", "_blank")}
             className="ml-4 font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30"
           >
             Resume
@@ -107,7 +107,7 @@ export function Navbar() {
               ))}
               <Button 
                 className="w-full mt-4"
-                onClick={() => window.open("/attached_assets/MyResumeNE_1769573521251.pdf", "_blank")}
+                onClick={() => window.open("/resume", "_blank")}
               >
                 Download Resume
               </Button>

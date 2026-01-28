@@ -1,7 +1,4 @@
-import { db } from "./db";
 import {
-  projects,
-  messages,
   type InsertProject,
   type InsertMessage,
   type Project,
@@ -14,20 +11,42 @@ export interface IStorage {
   createMessage(message: InsertMessage): Promise<Message>;
 }
 
-export class DatabaseStorage implements IStorage {
-  async getProjects(): Promise<Project[]> {
-    return await db.select().from(projects).orderBy(projects.id);
-  }
+ export class MemoryStorage implements IStorage {
+   private projects: Project[] = [];
+   private messages: Message[] = [];
+   private nextProjectId = 1;
+   private nextMessageId = 1;
 
-  async createProject(project: InsertProject): Promise<Project> {
-    const [newProject] = await db.insert(projects).values(project).returning();
-    return newProject;
-  }
+   async getProjects(): Promise<Project[]> {
+     return [...this.projects].sort((a, b) => a.id - b.id);
+   }
 
-  async createMessage(message: InsertMessage): Promise<Message> {
-    const [newMessage] = await db.insert(messages).values(message).returning();
-    return newMessage;
-  }
-}
+   async createProject(project: InsertProject): Promise<Project> {
+     const newProject: Project = {
+       id: this.nextProjectId++,
+       createdAt: new Date(),
+       title: project.title,
+       description: project.description,
+       techStack: project.techStack,
+       githubUrl: project.githubUrl ?? null,
+       demoUrl: project.demoUrl ?? null,
+       imageUrl: project.imageUrl ?? null,
+     };
+     this.projects.push(newProject);
+     return newProject;
+   }
 
-export const storage = new DatabaseStorage();
+   async createMessage(message: InsertMessage): Promise<Message> {
+     const newMessage: Message = {
+       id: this.nextMessageId++,
+       createdAt: new Date(),
+       name: message.name,
+       email: message.email,
+       message: message.message,
+     };
+     this.messages.push(newMessage);
+     return newMessage;
+   }
+ }
+
+ export const storage = new MemoryStorage();

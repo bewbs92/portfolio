@@ -1,33 +1,30 @@
-import { pgTable, text, serial, timestamp } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// === TABLE DEFINITIONS ===
-export const projects = pgTable("projects", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  description: text("description").notNull(),
-  techStack: text("tech_stack").array().notNull(), // Array of strings
-  githubUrl: text("github_url"),
-  demoUrl: text("demo_url"),
-  imageUrl: text("image_url"),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-export const messages = pgTable("messages", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  message: text("message").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
 // === SCHEMAS ===
-export const insertProjectSchema = createInsertSchema(projects).omit({ id: true, createdAt: true });
-export const insertMessageSchema = createInsertSchema(messages).omit({ id: true, createdAt: true });
+export const projectSchema = z.object({
+  id: z.number().int().positive(),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  techStack: z.array(z.string().min(1)),
+  githubUrl: z.string().url().optional().nullable(),
+  demoUrl: z.string().url().optional().nullable(),
+  imageUrl: z.string().url().optional().nullable(),
+  createdAt: z.date(),
+});
+
+export const messageSchema = z.object({
+  id: z.number().int().positive(),
+  name: z.string().min(1),
+  email: z.string().email(),
+  message: z.string().min(1),
+  createdAt: z.date(),
+});
+
+export const insertProjectSchema = projectSchema.omit({ id: true, createdAt: true });
+export const insertMessageSchema = messageSchema.omit({ id: true, createdAt: true });
 
 // === API TYPES ===
-export type Project = typeof projects.$inferSelect;
+export type Project = z.infer<typeof projectSchema>;
 export type InsertProject = z.infer<typeof insertProjectSchema>;
-export type Message = typeof messages.$inferSelect;
+export type Message = z.infer<typeof messageSchema>;
 export type InsertMessage = z.infer<typeof insertMessageSchema>;

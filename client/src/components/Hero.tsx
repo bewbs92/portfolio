@@ -43,8 +43,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            Hi, I'm <span className="font-semibold text-foreground">Syed Tabeeb Ur Rahman</span>. 
-            A Front-End Tech Lead with 10+ years of expertise in crafting high-performance, maintainable web applications.
+            Hi, I'm <span className="font-semibold text-foreground">Syed Tabeeb</span>. 
+            A Front-End Developer with 10+ years of expertise in crafting high-performance, maintainable web applications.
           </motion.p>
 
           <motion.div
@@ -63,7 +63,7 @@ export function Hero() {
               size="lg" 
               variant="outline" 
               className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/50"
-              onClick={() => window.open("/attached_assets/MyResumeNE_1769573521251.pdf", "_blank")}
+              onClick={() => window.open("/resume", "_blank")}
             >
               Download Resume <Download className="ml-2 w-5 h-5" />
             </Button>

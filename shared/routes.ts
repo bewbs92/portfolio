@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertProjectSchema, insertMessageSchema, projects, messages } from './schema';
+import { insertProjectSchema, insertMessageSchema, type Project, type Message } from './schema';
 
 export * from './schema';
 
@@ -19,7 +19,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/projects',
       responses: {
-        200: z.array(z.custom<typeof projects.$inferSelect>()),
+        200: z.array(z.custom<Project>()),
       },
     },
     create: {
@@ -27,7 +27,7 @@ export const api = {
       path: '/api/projects',
       input: insertProjectSchema,
       responses: {
-        201: z.custom<typeof projects.$inferSelect>(),
+        201: z.custom<Project>(),
         400: errorSchemas.validation,
       },
     }
@@ -38,7 +38,7 @@ export const api = {
       path: '/api/messages',
       input: insertMessageSchema,
       responses: {
-        201: z.custom<typeof messages.$inferSelect>(),
+        201: z.custom<Message>(),
         400: errorSchemas.validation,
       },
     },

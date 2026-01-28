@@ -3,11 +3,17 @@ import type { Server } from "http";
 import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
+import path from "path";
 
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  app.get("/resume", (_req, res) => {
+    const resumePath = path.resolve(process.cwd(), "attached_assets", "MyResume.pdf");
+    res.download(resumePath, "MyResume.pdf");
+  });
+
   // Projects
   app.get(api.projects.list.path, async (req, res) => {
     const projects = await storage.getProjects();
