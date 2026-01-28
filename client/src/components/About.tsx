@@ -38,7 +38,7 @@ export function About() {
                   I am an experienced Frontend Engineer with over <span className="text-foreground font-semibold">10 years of expertise</span> in designing and building scalable, high-performance web applications.
                 </p>
                 <p>
-                  My journey spans from early startups to large enterprises like Lowe's, where I currently lead frontend initiatives. I specialize in the modern JavaScript ecosystem, particularly React, Micro-Frontends, and building accessible, user-centric interfaces.
+                  My journey spans from early startups to large enterprises like Lowe's, I specialize in the modern JavaScript ecosystem, particularly React, Micro-Frontends, and building accessible, user-centric interfaces.
                 </p>
                 <p>
                   Beyond code, I am passionate about mentoring teams, establishing best practices, and translating complex business requirements into elegant technical solutions.

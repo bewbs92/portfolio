@@ -66,10 +66,12 @@ export function Navbar() {
           <Button 
             variant="default" 
             size="sm"
-            onClick={() => window.open("/resume", "_blank")}
             className="ml-4 font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30"
+            asChild
           >
-            Resume
+            <a href="/MyResume.pdf" download>
+              Resume
+            </a>
           </Button>
         </div>
 
@@ -107,9 +109,11 @@ export function Navbar() {
               ))}
               <Button 
                 className="w-full mt-4"
-                onClick={() => window.open("/resume", "_blank")}
+                asChild
               >
-                Download Resume
+                <a href="/MyResume.pdf" download>
+                  Download Resume
+                </a>
               </Button>
             </div>
           </motion.div>

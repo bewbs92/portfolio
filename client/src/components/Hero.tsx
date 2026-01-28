@@ -63,9 +63,11 @@ export function Hero() {
               size="lg" 
               variant="outline" 
               className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/50"
-              onClick={() => window.open("/resume", "_blank")}
+              asChild
             >
-              Download Resume <Download className="ml-2 w-5 h-5" />
+              <a href="/MyResume.pdf" download>
+                Download Resume <Download className="ml-2 w-5 h-5" />
+              </a>
             </Button>
           </motion.div>
 
