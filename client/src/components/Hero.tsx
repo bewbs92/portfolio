@@ -44,7 +44,7 @@ export function Hero() {
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
             Hi, I'm <span className="font-semibold text-foreground">Syed Tabeeb</span>. 
-            A Front-End Developer with 10+ years of expertise in crafting high-performance, maintainable web applications.
+           FrontEnd dev with 10 years turning ideas into fast, clean web apps.
           </motion.p>
 
           <motion.div
