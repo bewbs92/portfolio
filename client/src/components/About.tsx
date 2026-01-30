@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, Zap, Users } from "lucide-react";
+import { Award, Zap, Users, Wrench } from "lucide-react";
 
 const features = [
   {
@@ -16,6 +16,11 @@ const features = [
     icon: Award,
     title: "Architecture",
     description: "Specialized in Micro-Frontends and scalable component architectures."
+  },
+  {
+    icon: Wrench,
+    title: "Modern Tooling",
+    description: "Proficient with Windsurf AI-powered IDE and Supabase for rapid, full-stack development."
   }
 ];
 

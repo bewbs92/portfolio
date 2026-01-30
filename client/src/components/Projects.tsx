@@ -46,7 +46,7 @@ export function Projects() {
                 Service Log & Maintenance Dashboard
               </h3>
               <p className="text-muted-foreground mb-6 line-clamp-3 flex-grow">
-                A full-stack vehicle maintenance system with service history, workshop assignment, and “next service due” reminders built with a modern dashboard UI and Supabase-backed authentication/data.
+                A full-scale vehicle maintenance app built using Replit, Windsurf, React, and Supabase. Features service history, workshop assignment, and "next service due" reminders with a modern dashboard UI and Supabase-backed authentication/data.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
@@ -54,16 +54,18 @@ export function Projects() {
                 <Badge key={"tech"} variant="secondary" className="font-normal">
                   React
                 </Badge>
-
+                <Badge key={"tech"} variant="secondary" className="font-normal">
+                  WindSurf
+                </Badge>
                 <Badge key={"tech"} variant="secondary" className="font-normal">
                   MUI
                 </Badge>
                 <Badge key={"tech"} variant="secondary" className="font-normal">
                   Supabase
                 </Badge>
-                 <Badge key={"tech"} variant="secondary" className="font-normal">
-                         Vercel 
-                    </Badge>
+                <Badge key={"tech"} variant="secondary" className="font-normal">
+                  Vercel
+                </Badge>
               </div>
 
               <div className="flex gap-4 mt-auto pt-4 border-t border-border/50">

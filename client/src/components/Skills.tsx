@@ -10,8 +10,8 @@ const skillCategories = [
     skills: ["Tailwind CSS", "SASS/SCSS", "Material UI", "Bootstrap", "Styled Components", "Framer Motion", "Storybook", "Responsive Design"]
   },
   {
-    title: "Tools & DevOps",
-    skills: ["Git", "Webpack", "Vite", "Node.js", "CI/CD Pipelines", "Docker", "Jest", "React Testing Library", "JIRA", "Agile"]
+    title: "Tools & Platforms",
+    skills: ["Git", "Webpack", "Vite", "CI/CD Pipelines", "Docker", "Jest", "React Testing Library", "JIRA", "Agile", "Windsurf", "Replit", "Supabase"]
   },
   {
     title: "Architecture & Design",
